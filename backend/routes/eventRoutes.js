@@ -8,6 +8,7 @@ router.get('/', (req, res) => {
 
 router.post('/', async (req, res) => {
     const {title, load, reps} = req.body
+    
     try {
         const event = await event.create({title, load, reps})
         res.status(200).json(event)
