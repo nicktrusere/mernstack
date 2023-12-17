@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require('path')
+const UserModel = require('./models/Users')
 
 const multer = require('multer')
 const storage = multer.diskStorage({
@@ -22,7 +23,9 @@ app.get("/upload", (req, res) => {
 });
 
 app.post("/upload", upload.single("image"), (req, res) => {
-    res.send("Image uploaded")
+    UserModel.create({Image: req.file.filename})
+    .then(result => res.json(result))
+    .catch(err => console.log(err))
 });
 
 app.listen(3001);
