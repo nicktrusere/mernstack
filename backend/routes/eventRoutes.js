@@ -2,6 +2,7 @@ const express = require('express')
 const event = require('../models/eventModel')
 const router = express.Router()
 
+
 router.get('/', (req, res) => {
     res.status(200).json({message: 'Get events'})
 })
