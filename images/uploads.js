@@ -3,6 +3,11 @@ const app = express();
 const path = require('path')
 const UserModel = require('./models/Users')
 
+app.use(cors())
+app.use(express.json())
+app.use(express.static('public'))
+
+
 const multer = require('multer')
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {

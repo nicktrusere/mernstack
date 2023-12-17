@@ -16,6 +16,8 @@ function App() {
         <div>
             <input type="file" onChange={e => setFile(e.target.files[0])} />
             <button onClick={handleUpload}>Upload</button>
+            <br />
+            <img src={'http://localhost:3001/getImage'} alt="" />
         </div>
     );
 }
