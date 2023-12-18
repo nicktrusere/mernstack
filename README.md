@@ -9,6 +9,8 @@ and may thus result in syntax errors)
 + set the value of environment variable MONGO_URI equal to the connection string to the mongodb  
   
 #### USAGE EXAMPLE  
-+ export MONGO_URI="mongodb://127.0.0.1:27017/mernstack"  
-+ nodemon server.js  
+##### Starting application  
++ $export MONGO_URI="mongodb://127.0.0.1:27017/mernstack"  
++ $nodemon server.js  
+##### Testing endpoints  
 + Try accessing the different routes using an API testing tool e.g. POSTMAN
