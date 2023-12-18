@@ -1,4 +1,7 @@
 const asyncHandler = require('express-async-handler')
+
+const Event = require('../models/eventModel')
+
 //@description - Get event
 //@route -       POST /api/events
 //@access        Private
@@ -42,9 +45,6 @@ module.exports = {
     updateEvent,
     deleteEvent,
 }
-
-//const Event = require('../models/eventModel')
-
 //const setEvent = asyncHandler(async (req, res) => {
 //   if (!req.body.text) {
 //        res.status(400)
