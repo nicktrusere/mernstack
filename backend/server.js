@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-
 
 app.use('/api/memento', require('./routes/mememtoRoutes'))
 app.use('/api/users', require('./routes/userRoutes'))
-
+app.get("/create", express.static("./frontend/public/create_memento"));
 app.use(errorHandler)
 
 app.listen(port, () => console.log(`Server started on port ${port}`))

@@ -4,7 +4,6 @@ const router = express.Router()
 const {getMementos, setMemento, updateMemento, deleteMemento} = require('../controllers/mementoController')
 
 
-router.route('/').get(getMementos).post(setMemento)
 router.route('/:id').delete(deleteMemento).put(updateMemento)
 
 router.post('/', setEvent)

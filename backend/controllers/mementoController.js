@@ -17,11 +17,13 @@ const getMementos =  asyncHandler(async (req, res) => {
 //@access       Private
 
 const setMemento = asyncHandler(async (req, res) => {
-    if (!req.body.text) {
+    if (!req.body.name || !req.body.text) {
         res.status(400)
-        throw new Error('Please add a text field')
+        throw new Error('A memento must have atleat a name and a description')
     }
     const memento = await Memento.create({
+	name: req.body.name,
+	picture: req.body.picture,
         text: req.body.text,
     })
     
