@@ -1,0 +1,12 @@
+{%extends "base"%}
+{%block content%}
+<form id="form" action="/feeds" method="POST">
+  <div>
+    <input type="email" name="email" id="email" placeholder="email" required />
+  </div>
+  <div>
+    <input type="password" name="password", id="password" placeholder="password" required />
+  </div>
+  <button type="submit"><strong>Login</strong></button>
+</form>
+{%endblock%}
