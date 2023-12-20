@@ -4,7 +4,7 @@ const router = express.Router()
 const {getEvents, setEvent, updateEvent, deleteEvent} = require('../controllers/eventController')
 
 
-router.router('/').get(getEvents).post(setEvent)
+router.route('/').get(getEvents).post(setEvent)
 router.route('/:id').delete(deleteEvent).put(updateEvent)
 
 //router.post('/', setEvent)

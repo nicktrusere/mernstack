@@ -7,7 +7,9 @@ const Event = require('../models/eventModel')
 //@access        Private
 
 const getEvents =  asyncHandler(async (req, res) => {
-    res.status(200).json({message: 'Get events'})
+    const events = await Event.find()
+
+    res.status(200).json(events)
 })
 
 //@description  Set event
@@ -19,7 +21,10 @@ const setEvent = asyncHandler(async (req, res) => {
         res.status(400)
         throw new Error('Please add a text field')
     }
-
+    const event = await Event.create({
+        text: req.body.text,
+    })
+    
     res.status(200).json({message: 'Set event'})
 })
 
@@ -28,7 +33,19 @@ const setEvent = asyncHandler(async (req, res) => {
 //@access Private
 
 const updateEvent = asyncHandler(async (req, res) => {
-    res.status(200).json({message: `Update event ${req.params.id}` })
+    const event = await Event.findById(req.params.id)
+
+    if (!event) {
+        res.status(400)
+        throw new Error('Event not found')
+    }
+
+    const updateEvent = await Event.findByIdAndUpdate(req.params.id, req.
+        body, {
+        new: true,
+    })
+    
+    res.status(200).json(updatedEvent)
 })
 
 //@description - Delete event
@@ -36,6 +53,15 @@ const updateEvent = asyncHandler(async (req, res) => {
 //@access Private
 
 const deleteEvent = asyncHandler(async (req, res) => {
+    const event = await Event.findById(req.params.id)
+    
+    if (!event) {
+        res.status(400)
+        throw new Error('Event not found')
+    }
+
+    await event 
+
     res.status(200).json({message: $`Delete event ${req.params.id}` })
 })
 
@@ -45,6 +71,7 @@ module.exports = {
     updateEvent,
     deleteEvent,
 }
+
 //const setEvent = asyncHandler(async (req, res) => {
 //   if (!req.body.text) {
 //        res.status(400)
