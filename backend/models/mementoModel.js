@@ -34,5 +34,4 @@ const mementoSchema = mongoose.Schema(
     }
 )
 
-const MementoModel = mongoose.model('Mementos', mementoSchemaSchema)
-module.exports = MementoModel;
+module.exports = mongoose.model('Mementos', mementoSchema);
