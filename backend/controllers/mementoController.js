@@ -1,51 +1,51 @@
 const asyncHandler = require('express-async-handler')
 
-const Event = require('../models/eventModel')
+const memento = require('../models/mementoModel')
 
 //@description - Get event
 //@route -       POST /api/events
 //@access        Private
 
-const getEvents =  asyncHandler(async (req, res) => {
-    const events = await Event.find()
+const getMementos =  asyncHandler(async (req, res) => {
+    const mementos = await memento.find()
 
-    res.status(200).json(events)
+    res.status(200).json(trips)
 })
 
-//@description  Set event
-//@route        POST /api/events
+//@description  Set memento
+//@route        POST /api/memento
 //@access       Private
 
-const setEvent = asyncHandler(async (req, res) => {
+const setMemento = asyncHandler(async (req, res) => {
     if (!req.body.text) {
         res.status(400)
         throw new Error('Please add a text field')
     }
-    const event = await Event.create({
+    const memento = await Memento.create({
         text: req.body.text,
     })
     
-    res.status(200).json({message: 'Set event'})
+    res.status(200).json({message: 'Set Memo'})
 })
 
 //@description - Update event
 //@route - PUT /api/events/id
 //@access Private
 
-const updateEvent = asyncHandler(async (req, res) => {
-    const event = await Event.findById(req.params.id)
+const updateMemento = asyncHandler(async (req, res) => {
+    const memento = await Memento.findById(req.params.id)
 
-    if (!event) {
+    if (!memento) {
         res.status(400)
-        throw new Error('Event not found')
+        throw new Error('Memo not found')
     }
 
-    const updateEvent = await Event.findByIdAndUpdate(req.params.id, req.
+    const updateMemento = await Memento.findByIdAndUpdate(req.params.id, req.
         body, {
         new: true,
     })
     
-    res.status(200).json(updatedEvent)
+    res.status(200).json(updatedMemento)
 })
 
 //@description - Delete event
@@ -53,23 +53,23 @@ const updateEvent = asyncHandler(async (req, res) => {
 //@access Private
 
 const deleteEvent = asyncHandler(async (req, res) => {
-    const event = await Event.findById(req.params.id)
+    const memento = await Memento.findById(req.params.id)
     
-    if (!event) {
+    if (!memento) {
         res.status(400)
-        throw new Error('Event not found')
+        throw new Error('Memo not found')
     }
 
-    await event 
+    await memento 
 
-    res.status(200).json({message: $`Delete event ${req.params.id}` })
+    res.status(200).json({message: $`Delete memento ${req.params.id}` })
 })
 
 module.exports = {
-    getEvents,
-    setEvent,
-    updateEvent,
-    deleteEvent,
+    getMementos,
+    setMemento,
+    updateMemento,
+    deleteMemento,
 }
 
 //const setEvent = asyncHandler(async (req, res) => {

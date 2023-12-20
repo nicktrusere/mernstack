@@ -1,11 +1,11 @@
 const express = require('express')
-const event = require('../models/eventModel')
+const memento = require('../models/mementoModel')
 const router = express.Router()
-const {getEvents, setEvent, updateEvent, deleteEvent} = require('../controllers/eventController')
+const {getMementos, setMemento, updateMemento, deleteMemento} = require('../controllers/mementoController')
 
 
-router.route('/').get(getEvents).post(setEvent)
-router.route('/:id').delete(deleteEvent).put(updateEvent)
+router.route('/').get(getMementos).post(setMemento)
+router.route('/:id').delete(deleteMemento).put(updateMemento)
 
 //router.post('/', setEvent)
 //   router.post('/', async (req, res) => {
