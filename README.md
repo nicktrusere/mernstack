@@ -11,6 +11,7 @@ and may thus result in syntax errors)
 #### USAGE EXAMPLE  
 ##### Starting application  
 + $export MONGO_URI="mongodb://127.0.0.1:27017/mernstack"  
-+ $nodemon server.js  
++ $nodemon server.js
++ app.js  
 ##### Testing endpoints  
 + Try accessing the different routes using an API testing tool e.g. POSTMAN
