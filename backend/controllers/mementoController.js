@@ -1,6 +1,6 @@
 const asyncHandler = require('express-async-handler')
 
-const memento = require('../models/mementoModel')
+const memento = require('../models/mementosModel')
 
 //@description - Get event
 //@route -       POST /api/events

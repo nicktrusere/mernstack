@@ -1,10 +1,10 @@
 const express = require('express')
-const memento = require('../models/mementoModel')
+const memento = require('../models/mementosModel')
 const router = express.Router()
-const {getMementos, setMemento, updateMemento, deleteMemento} = require('../controllers/mementoController')
+const {getMemento, setMemento, updateMemento, deleteMemento} = require('../controllers/mementoController')
+const { protect } = require('../middleware/errorMiddleware')
 
-
-router.route('/').get(getMementos).post(setMemento)
+router.route('/').get(getMemento).post(setMemento)
 router.route('/:id').delete(deleteMemento).put(updateMemento)
 
 //router.post('/', setEvent)

@@ -1,31 +1,26 @@
-import './App.css';
-import { useState, useEffect } from "react"; 
-import Axios from "axios";
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import Header from './components/Header';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import User from './pages/User';
+//import { useState, useEffect } from "react"; 
+//import Axios from "axios";
 
 function App() {
-  const [ListOfMementos, setListOfMementos] = useState([]);
-
-  useEffect(() =>{
-    Axios.get("http://localhost:3000/getMementos").then((response) => {
-      setListOfMementos(response.data);
-    })
-  }, [])
-    // test object - mock data. inside useState([
-    //{ id: 1, name: "Greyling", email: "greyling@gmail.com", image: "image-link"}//
- // ]);
   return (
-    <div className="App">
-      <div className="mementosDsplay">
-        {ListOfMementos.map((memento) => {
-          return <div>
-            <h1>Name: {memento.name}</h1>
-            <h1>Name: {memento.email}</h1>
-            <h1>Name: {memento.image}</h1>
-          </div>
-        })}
-      </div>
-    </div>
-  );
+    <>
+      <Router>
+        <div className='container'>
+          <Header />
+          <Routes>
+            <Route path='/' element={<Login />} />
+            <Route path='/' element={<Register />} />
+            <Route path='/' element={<User />} />
+          </Routes>
+        </div>
+      </Router>
+    </>
+  )
 }
 
 export default App;
