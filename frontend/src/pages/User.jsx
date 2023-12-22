@@ -1,18 +1,18 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import GoalForm from '../components/GoalForm'
-import GoalItem from '../components/GoalItem'
+import MementoForm from '../components/GoalForm'
+import MementoItem from '../components/GoalItem'
 import Spinner from '../components/Spinner'
-import { getGoals, reset } from '../features/goals/goalSlice'
+import { getMementos, reset } from '../features/goals/goalSlice'
 
 function Dashboard() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
   const { user } = useSelector((state) => state.auth)
-  const { goals, isLoading, isError, message } = useSelector(
-    (state) => state.goals
+  const { mementos, isLoading, isError, message } = useSelector(
+    (state) => state.memento
   )
 
   useEffect(() => {
@@ -24,7 +24,7 @@ function Dashboard() {
       navigate('/login')
     }
 
-    dispatch(getGoals())
+    dispatch(getMementos())
 
     return () => {
       dispatch(reset())
@@ -39,20 +39,20 @@ function Dashboard() {
     <>
       <section className='heading'>
         <h1>Welcome {user && user.name}</h1>
-        <p>Goals Dashboard</p>
+        <p>Memento Dashboard</p>
       </section>
 
-      <GoalForm />
+      <MementoForm />
 
       <section className='content'>
-        {goals.length > 0 ? (
-          <div className='goals'>
-            {goals.map((goal) => (
-              <GoalItem key={goal._id} goal={goal} />
+        {mementos.length > 0 ? (
+          <div className='mementos'>
+            {mementos.map((memento) => (
+              <mementoItem key={memento._id} memento={memento} />
             ))}
           </div>
         ) : (
-          <h3>You have not set any goals</h3>
+          <h3>You have not set any Memes</h3>
         )}
       </section>
     </>
