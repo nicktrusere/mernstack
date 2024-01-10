@@ -7,9 +7,8 @@ const memento = require('../models/mementosModel')
 //@access        Private
 
 const getMementos =  asyncHandler(async (req, res) => {
-    const mementos = await memento.find()
-
-    res.status(200).json(trips)
+    const mementos = await memento.findAll();
+    res.status(200).json(mementos);
 })
 
 //@description  Set memento
@@ -33,14 +32,14 @@ const setMemento = asyncHandler(async (req, res) => {
 //@access Private
 
 const updateMemento = asyncHandler(async (req, res) => {
-    const memento = await Memento.findById(req.params.id)
+    const memento = await memento.findById(req.params.id)
 
     if (!memento) {
         res.status(400)
         throw new Error('Memo not found')
     }
 
-    const updateMemento = await Memento.findByIdAndUpdate(req.params.id, req.
+    const updateMemento = await memento.findByIdAndUpdate(req.params.id, req.
         body, {
         new: true,
     })
@@ -52,8 +51,8 @@ const updateMemento = asyncHandler(async (req, res) => {
 //@route - DELETE /api/events/:id
 //@access Private
 
-const deleteEvent = asyncHandler(async (req, res) => {
-    const memento = await Memento.findById(req.params.id)
+const deleteMemento = asyncHandler(async (req, res) => {
+    const memento = await memento.findById(req.params.id)
     
     if (!memento) {
         res.status(400)

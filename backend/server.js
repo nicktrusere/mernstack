@@ -8,7 +8,6 @@ const port = process.env.PORT || 5000
 const MementoModel = require('./models/mementosModel')
 const UserModel = require('./models/usersModel')
 
-
 connectDB()
 
 const app = express()
@@ -16,7 +15,7 @@ const app = express()
 app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
-app.use('/api/mementos', require('./routes/mememtoRoutes'))
+app.use('/mementos', require('./routes/mementoRoutes'))
 app.use('/api/users', require('./routes/userRoutes'))
 
 app.use(errorHandler)
