@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { createMemento } from '../features/goals/goalSlice'
+import { createMemento } from '../memento/mementoControllers'
 
 function MementoForm() {
   const [text, setText] = useState('')

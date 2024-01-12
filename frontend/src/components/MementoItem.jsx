@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux'
-import { deleteMemento } from '../features/memento/mementoSlice'
+import { deleteMemento } from '../memento/mementoRouter'
 
 function MementoItem({ memento }) {
   const dispatch = useDispatch()

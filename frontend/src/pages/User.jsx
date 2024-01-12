@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import MementoForm from '../components/GoalForm'
-import MementoItem from '../components/GoalItem'
+import MementoForm from '../components/MementoForm'
+import MementoItem from '../components/MementoItem'
 import Spinner from '../components/Spinner'
 import { getMementos, reset } from '../features/goals/goalSlice'
 
@@ -48,7 +48,7 @@ function Dashboard() {
         {mementos.length > 0 ? (
           <div className='mementos'>
             {mementos.map((memento) => (
-              <mementoItem key={memento._id} memento={memento} />
+              <MementoItem key={memento._id} memento={memento} />
             ))}
           </div>
         ) : (
